@@ -1,0 +1,136 @@
+
+@mixin navbar( $background, $color, $border-color:transparent, $border-radius:0, $margin-bottom:0) {
+  & {
+    background-color: $background;
+    border-color: $border-color;
+    border-radius: $border-radius;
+    margin-bottom: $margin-bottom;
+
+    .navbar-brand {
+      color: $color;
+      &:focus,
+      &:hover {
+        color: lighten($color, 10%);
+        background-color: darken($background, 10%);
+      }
+    }
+    .navbar-form {
+      button,
+      input {
+        border-radius: 0;
+        background: $background;
+        border: none;
+        height: 34px;
+        color: $color;
+        &::-webkit-input-placeholder {
+          color: $color;
+        }
+        &::-moz-placeholder {
+          color: $color;
+        }
+        /* firefox 19+ */
+        &:-ms-input-placeholder {
+          color: $color;
+        }
+        /* ie */
+        &:-moz-placeholder {
+          color: $color;
+        }
+      }
+      input {
+        border-bottom: 1px solid $color;
+      }
+      button {
+        background: lighten($background, 10%);
+        color: lighten($color, 20%);
+      }
+    }
+    .navbar-text {
+      color: $color;
+    }
+    .navbar-nav {
+      > li > a {
+        color: $color;
+        &:focus,
+        &:hover {
+          color: $color;
+          background-color: darken($background, 5%);
+        }
+      }
+      > .active > a {
+        &,
+        &:focus,
+        &:hover {
+          color: $color;
+          background-color: darken($background, 4%);
+        }
+      }
+      > .disabled > a {
+        &,
+        &:focus,
+        &:hover {
+          color: $navbar-default-link-disabled-color;
+          background-color: $navbar-default-link-disabled-bg;
+        }
+      }
+    }
+    .navbar-toggle {
+      border-color: $border-color;
+      background: rgba(darken($background, 15%), .9);
+
+      color: $color;
+      &:focus,
+      &:hover {
+        background: rgba(lighten($background, 15%), .9);
+      }
+      .icon-bar {
+        background-color: $color;
+      }
+    }
+    .navbar-collapse,
+    .navbar-form {
+      border-color: $border-color;
+    }
+    // Dropdown menu items
+    .navbar-nav {
+      // Remove background color from open dropdown
+      > .open > a {
+        &,
+        &:focus,
+        &:hover {
+          background-color: darken($background, 5%);
+          color: $color;
+        }
+      }
+      @media (max-width: $grid-float-breakpoint-max) {
+        // Dropdowns get custom display when collapsed
+        .open .dropdown-menu {
+          > li > a {
+            color: $color;
+            &:focus,
+            &:hover {
+              color: $color;
+              background-color: darken($background, 5%);
+            }
+          }
+          > .active > a {
+            &,
+            &:focus,
+            &:hover {
+              color: $color;
+              background-color: darken($background, 5%);
+            }
+          }
+          > .disabled > a {
+            &,
+            &:focus,
+            &:hover {
+              color: $navbar-default-link-disabled-color;
+              background-color: $navbar-default-link-disabled-bg;
+            }
+          }
+        }
+      }
+    }
+  }
+}
